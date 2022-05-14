@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import axios from "axios";
 
 export default function InputFile() {
+  const fullName = useRef(null);
   const phoneNumberRef = useRef(null);
   const descriptionRef = useRef(null);
   const [fileUploaded, setFileUploaded] = useState();
@@ -12,8 +13,9 @@ export default function InputFile() {
   };
   const sendFile = async () => {
     const payload = new FormData();
-    payload.append("phoneNumber", phoneNumberRef.current.value);
-    payload.append("description", descriptionRef.current.value);
+    payload.append("nama", fullName.current.value);
+    payload.append("alamat", descriptionRef.current.value);
+    payload.append("telp", phoneNumberRef.current.value);
     payload.append("fileUploaded", fileUploaded);
     try {
       const proggresSave = await axios.post(
@@ -47,6 +49,26 @@ export default function InputFile() {
             <div className="shadow sm:rounded-md sm:overflow-hidden">
               <div className="px-4 py-5 bg-white space-y-6 sm:p-6">
                 <div className="grid grid-cols-3 gap-6">
+                  <div className="col-span-3 sm:col-span-2">
+                    <label
+                      htmlFor="company-website"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Nama Lengkap
+                    </label>
+                    <div className="mt-1 flex rounded-md shadow-sm">
+                      <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
+                        +62
+                      </span>
+                      <input
+                        type="text"
+                        id="company-website"
+                        className="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300"
+                        placeholder="your name"
+                        ref={fullName}
+                      />
+                    </div>
+                  </div>
                   <div className="col-span-3 sm:col-span-2">
                     <label
                       htmlFor="company-website"

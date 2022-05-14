@@ -2,9 +2,9 @@ import React from "react";
 function Footer() {
   return (
     <>
-      <div className="bg-[#5A5BDC]">
+      <div className="bg-[#5A5BDC]  mt-0 2xl:mt-64">
         <div className="mx-auto container  flex flex-col items-center justify-center">
-          <div>
+          <div className="mt-10">
             <img src="/img/logo.png" alt="" />
           </div>
           <div className="text-black flex flex-col md:items-center f-f-l pt-3">

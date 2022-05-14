@@ -4,9 +4,9 @@ import Featured from "components/componentLanding/Home/Featured";
 import Price from "components/componentLanding/Home/Price";
 import Tools from "components/componentLanding/Home/Tools";
 import Testimonial from "components/componentLanding/Home/Testimonial";
-import InputFile from "./componentLanding/Home/InputFile";
-import About from "./componentLanding/Home/About";
-import Footer from "./componentLanding/Home/Footer";
+import InputFile from "components/componentLanding/Home/InputFile";
+import About from "components/componentLanding/Home/About";
+import Footer from "components/componentLanding/Home/Footer";
 
 const Home = () => {
   return (

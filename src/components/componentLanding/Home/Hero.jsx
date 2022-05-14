@@ -1,7 +1,11 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
+import { useDispatch } from "react-redux";
+import { actionsLogin } from "features/root/appLogin";
+
 function Hero() {
-  let navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { loginWithRedirect } = useAuth0();
   const [menu, setMenu] = useState(false);
   return (
     <>
@@ -38,53 +42,38 @@ function Hero() {
                 } p-2 border-r bg-white absolute rounded top-0 left-0 right-0 shadow mt-24`}
               >
                 <li className="flex cursor-pointer text-gray-600 text-sm leading-3 tracking-normal mt-2 py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none">
-                  <a
-                    href="javascript: void(0)"
-                    className="ml-2 focus:outline-none focus:ring-2 focus:ring-black"
-                  >
+                  <div className="ml-2 focus:outline-none focus:ring-2 focus:ring-black">
                     <span className="font-bold">Home</span>
-                  </a>
+                  </div>
                 </li>
                 <li
                   className="flex cursor-pointer text-gray-600 text-sm leading-3 tracking-normal py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none"
                   onClick="dropdownHandler(this)"
                 >
-                  <a
-                    href="javascript: void(0)"
-                    className="ml-2 focus:outline-none focus:ring-2 focus:ring-black"
-                  >
+                  <div className="ml-2 focus:outline-none focus:ring-2 focus:ring-black">
                     <span className="font-bold">Tentang Kami</span>
-                  </a>
+                  </div>
                 </li>
                 <li className="cursor-pointer text-gray-600 text-sm leading-3 tracking-normal py-2 hover:text-indigo-700 flex items-center focus:text-indigo-700 focus:outline-none">
-                  <a
-                    href="javascript: void(0)"
-                    className="ml-2 focus:outline-none focus:ring-2 focus:ring-black"
-                  >
+                  <div className="ml-2 focus:outline-none focus:ring-2 focus:ring-black">
                     <span className="font-bold">Harga</span>
-                  </a>
+                  </div>
                 </li>
                 <li
                   className="flex cursor-pointer text-gray-600 text-sm leading-3 tracking-normal py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none"
                   onClick="dropdownHandler(this)"
                 >
-                  <a
-                    href="javascript: void(0)"
-                    className="ml-2 focus:outline-none focus:ring-2 focus:ring-black"
-                  >
+                  <div className="ml-2 focus:outline-none focus:ring-2 focus:ring-black">
                     <span className="font-bold">Buat Pesanan</span>
-                  </a>
+                  </div>
                 </li>
                 <li
                   className="flex cursor-pointer text-gray-600 text-sm leading-3 tracking-normal pt-2 pb-4 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none"
                   onClick="dropdownHandler(this)"
                 >
-                  <a
-                    href="javascript: void(0)"
-                    className="ml-2 focus:outline-none focus:ring-2 focus:ring-black"
-                  >
+                  <div className="ml-2 focus:outline-none focus:ring-2 focus:ring-black">
                     <span className="font-bold">Sign In</span>
-                  </a>
+                  </div>
                 </li>
               </ul>
               <div className="xl:hidden">
@@ -164,7 +153,10 @@ function Hero() {
                 </li>
               </ul>
               <button
-                onClick={() => navigate("/login")}
+                onClick={() => {
+                  dispatch(actionsLogin({ access_token: true }));
+                  loginWithRedirect();
+                }}
                 className="px-6 py-3 bg-indigo-400 hover:bg-indigo-500 text-white text-base font-medium rounded-lg flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700"
               >
                 Sign In
@@ -180,7 +172,7 @@ function Hero() {
         <div className="relative px-4 xl:px-0 container mx-auto md:flex items-center gap-8 ">
           <div className="text-color w-full md:w-1/3 pt-16 lg:pt-32 xl:pt-12">
             <h1
-              className="text-4xl md:text-4xl lg:text-6xl w-11/12 lg:w-11/12 xl:w-full xl:text-6xl text-gray-900 font-extrabold f-f-l"
+              className="text-lg md:text-2xl lg:text-3xl xl:text-4xl w-11/12 lg:w-11/12 xl:w-full 2xl:text-6xl text-gray-900 font-extrabold f-f-l"
               data-aos="fade-right"
               data-aos-duration="2000"
             >

@@ -31,7 +31,8 @@ const reducer = combineReducers({
   slice: appSlice,
   login: appLogin,
 });
-const persistConfig = {
+
+export const persistConfig = {
   key: "root",
   version: 1,
   storage,

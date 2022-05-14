@@ -21,7 +21,7 @@ export default function Testimonial() {
           isIntrinsicHeight={true}
           totalSlides={2}
         >
-          <h1 className="text-5xl font-bold xl:block hidden leading-tight text-gray-800">
+          <h1 className="text-2xl font-bold xl:block hidden leading-tight text-gray-800">
             Apa Pendapat orang banyak tentang
             <br />
             Percetakan HoriPhoto
